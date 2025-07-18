@@ -1926,6 +1926,15 @@ return {
         }
       }
     },
+    paperback_ego_gift = {
+      c_paperback_dark_vestige = {
+        name = "Dark Vestige",
+        text = {
+          "The result of attempting to",
+          "have duplicate {C:paperback_ego_gift}E.G.O Gifts{}...",
+        }
+      },
+    },
     Voucher = {
       v_paperback_celtic_cross = {
         name = "Celtic Cross",
@@ -2140,6 +2149,14 @@ return {
           "disabled in {C:legendary}Paperback",
         }
       },
+      paperback_requires_ego_gifts = {
+        name = "Requires E.G.O. Gifts",
+        text = {
+          "Removed from pool due",
+          "to {C:paperback_ego_gift}E.G.O. Gifts{} being",
+          "disabled in {C:legendary}Paperback",
+        }
+      },
 
       -- Stickers
       paperback_energized = {
@@ -2230,7 +2247,13 @@ return {
           "{C:inactive}(Resets after played hand)"
         }
       },
-
+      -- E.G.O. Gift Sins
+      paperback_sin_none = {
+        name = "None...",
+        text = {
+          "When sold, gives {C:money}$#1#{}"
+        }
+      },
       -- Minor Arcana
       p_paperback_minor_arcana_normal = {
         name = "Minor Arcana Pack",
@@ -2399,6 +2422,13 @@ return {
       b_paperback_minor_arcana_cards = "Minor Arcana",
       -- Text shown at the bottom while opening booster
       paperback_minor_arcana_pack = "Minor Arcana Pack",
+
+      -- Badge under gifts
+      k_paperback_ego_gift = "E.G.O. Gift",
+      -- Name of consumable type in collection
+      b_paperback_ego_gift_cards = "E.G.O. Gift",
+      -- Text shown at the bottom while opening booster
+      paperback_ego_gift_pack = "E.G.O. Gift Extraction",
 
       paperback_confessed_ex = "Confessed!",
       paperback_polychrome_ex = "Polychrome!",

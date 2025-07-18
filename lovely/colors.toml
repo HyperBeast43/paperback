@@ -22,6 +22,8 @@ PAPERBACK_PINK = HEX('FF79AD'),
 PAPERBACK_ENERGIZED = HEX('FD5F55'),
 PAPERBACK_TEMPORARY = HEX('B3A08A'),
 PAPERBACK_SOLEMN_WHITE = HEX('F9FFE3'),
+PAPERBACK_EGO_GIFT_RED = HEX('FF5B5B'),
+PAPERBACK_EGO_GIFT_YELLOW = HEX('FEFEA1'),
 '''
 
 [[patches]]
@@ -40,4 +42,5 @@ payload = '''
   paperback_pink = G.C.PAPERBACK_PINK,
   paperback_perishable = G.C.PERISHABLE,
   paperback_temporary = G.C.PAPERBACK_TEMPORARY,
+  paperback_ego_gift = G.C.PAPERBACK_EGO_RED,
 '''

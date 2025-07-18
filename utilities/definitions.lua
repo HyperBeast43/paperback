@@ -146,6 +146,10 @@ PB_UTIL.requirement_map = {
     setting = 'ranks_enabled',
     tooltip = 'paperback_requires_ranks'
   },
+  requires_ego_gifts = {
+    setting = 'ego_gifts_enabled',
+    tooltip = 'paperback_requires_ego_gifts'
+  }
 }
 
 -- Disable specific items by commenting them out
@@ -378,6 +382,10 @@ PB_UTIL.ENABLED_MINOR_ARCANA = {
   -- "king_of_pentacles", -- PENTACLES
 }
 
+PB_UTIL.ENABLED_EGO_GIFTS = {
+  'dark_vestige'
+}
+
 PB_UTIL.ENABLED_SPECTRALS = {
   "apostle_of_cups",
   "apostle_of_wands",
@@ -525,6 +533,10 @@ PB_UTIL.ENABLED_MINOR_ARCANA_BOOSTERS = {
   'minor_arcana_jumbo_1',
   'minor_arcana_jumbo_2',
   'minor_arcana_mega',
+}
+
+PB_UTIL.ENABLED_EGO_GIFT_BOOSTERS = {
+  'ego_gift_normal_1',
 }
 
 PB_UTIL.ENABLED_VOUCHERS = {
@@ -713,6 +725,44 @@ if PB_UTIL.config.minor_arcana_enabled then
   }
 end
 
+
+-- Define custom MinorArcana object with shared properties for handling common behavior
+if PB_UTIL.config.ego_gifts_enabled then
+  --- @type SMODS.Consumable
+  PB_UTIL.EGOGifts = SMODS.Consumable:extend {
+    set = 'paperback_ego_gift',
+    unlocked = true,
+    discovered = false,
+    cost = 0,
+
+    loc_vars = function(self, info_queue, card)
+      info_queue[#info_queue + 1] = PB_UTIL.sin_tooltip(card.ability.sin)
+    end,
+
+    calculate = function(self, card, context)
+      if context.selling_self then
+        if card.ability.sin then
+          local sin = card.ability.sin
+          local vars = PB_UTIL.sin_tooltip(sin).vars
+          return PB_UTIL.sin_debuff(sin, vars)
+        end
+      end
+    end,
+    --[[
+    set_badges = function(self, card, badges)
+      if card.ability.sin then
+        local badge_key = 'paperback_sin_' .. card.ability.sin
+        badges[#badges + 1] = create_badge(localize(localize(badge_key)),
+          G.C['PAPERBACK_SIN_' .. string.upper(card.ability.sin)], G.C.WHITE, 1.2)
+      end
+    end,
+    ]] --
+    add_to_deck = function(self, card, from_debuff)
+      PB_UTIL.set_sell_value(card, 0)
+    end
+  }
+end
+
 if PB_UTIL.config.suits_enabled then
   --- @type SMODS.Consumable
   PB_UTIL.Planet = SMODS.Consumable:extend {
@@ -751,4 +801,16 @@ PB_UTIL.ENABLED_PAPERCLIPS = {
   "white_clip",
   "yellow_clip",
   "gold_clip",
+}
+
+-- Vars for Calc and Loc
+PB_UTIL.EGO_GIFT_SINS = {
+  ["none"] = { 5 },
+  ["pride"] = { -15 },
+  ["gloom"] = { 1.5 },
+  ["wrath"] = {},
+  ["envy"] = { -1 },
+  ["lust"] = { 2 },
+  ["gluttony"] = {},
+  ["sloth"] = {},
 }
