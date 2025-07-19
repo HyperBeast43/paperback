@@ -2249,9 +2249,21 @@ return {
       },
       -- E.G.O. Gift Sins
       paperback_sin_none = {
-        name = "None...",
+        name = "Vestige",
         text = {
-          "When sold, gives {C:money}$#1#{}"
+          "Always sells for {C:money}$#1#{}"
+        }
+      },
+      paperback_sin_wrath = {
+        name = "Wrath",
+        text = {
+          "When sold, {C:attention}destroy{} all other held {C:attention}consumables"
+        }
+      },
+      paperback_sin_lust = {
+        name = "Lust",
+        text = {
+          "When sold, {C:attention}lose #2# levels{} in {C:attention}most played hand"
         }
       },
       -- Minor Arcana
@@ -2430,6 +2442,16 @@ return {
       -- Text shown at the bottom while opening booster
       paperback_ego_gift_pack = "E.G.O. Gift Extraction",
 
+      -- Badge under E.G.O. Gifts based on sins
+      k_paperback_ego_sin_none = "Vestige",
+      k_paperback_ego_sin_pride = "Pride",
+      k_paperback_ego_sin_wrath = "Wrath",
+      k_paperback_ego_sin_gloom = "Gloom",
+      k_paperback_ego_sin_sloth = "Sloth",
+      k_paperback_ego_sin_lust = "Lust",
+      k_paperback_ego_sin_envy = "Envy",
+      k_paperback_ego_sin_gluttony = "Gluttony",
+
       paperback_confessed_ex = "Confessed!",
       paperback_polychrome_ex = "Polychrome!",
       paperback_destroyed_ex = "Destroyed!",
@@ -2461,6 +2483,7 @@ return {
       paperback_ui_no_requires_restart = "Doesn't Require Restart",
       paperback_ui_enable_blinds = "Enable Blinds",
       paperback_ui_enable_minor_arcana = "Enable Minor Arcana",
+      paperback_ui_enable_ego_gifts = "Enable E.G.O. Gifts",
       paperback_ui_enable_enhancements = "Enable Enhancements",
       paperback_ui_enable_editions = "Enable Editions",
       paperback_ui_enable_paperclips = "Enable Paperclips",

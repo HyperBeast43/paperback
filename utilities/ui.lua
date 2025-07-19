@@ -51,7 +51,7 @@ SMODS.current_mod.config_tab = function()
                 ref_value = 'ranks_enabled',
               },
               create_toggle {
-                label = localize('paperback_ui_enable_ranks'),
+                label = localize('paperback_ui_enable_ego_gifts'),
                 ref_table = PB_UTIL.config,
                 ref_value = 'ego_gifts_enabled',
               }
@@ -382,11 +382,7 @@ end
 --- @return table | nil
 function PB_UTIL.sin_tooltip(type)
   local key = 'paperback_sin_' .. type
-
-  if not PB_UTIL.config.ego_gifts_enabled then return end
   local vars = PB_UTIL.EGO_GIFT_SINS[type]
-
-
 
   return {
     set = 'Other',

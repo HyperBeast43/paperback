@@ -1,4 +1,4 @@
-PB_UTIL.MinorArcanaBooster {
+PB_UTIL.EGO_GiftBooster {
   key = 'ego_gift_normal_1',
   atlas = 'boosters_atlas',
   pos = { x = 0, y = 1 },
