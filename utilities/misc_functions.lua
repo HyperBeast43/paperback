@@ -1088,12 +1088,12 @@ function PB_UTIL.sin_debuff(type, vars)
   local ret = {}
   local returns = {
     ['none'] = {},
-    ['wrath'] = function()
-      SMODS.destroy_cards(G.consumeables.cards, false)
-      return {
-        message = localize('paperback_destroyed_ex')
-      }
-    end
+    ['wrath'] = {
+      message = localize('paperback_destroyed_ex'),
+      func = function()
+        SMODS.destroy_cards(G.consumeables.cards, false, true)
+      end
+    }
   }
   print(type)
   print(returns[type])

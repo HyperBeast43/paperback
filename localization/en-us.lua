@@ -1934,6 +1934,13 @@ return {
           "have duplicate {C:paperback_ego_gift}E.G.O Gifts{}...",
         }
       },
+      c_paperback_imposed_weight = {
+        name = "Imposed Weight",
+        text = {
+          "Retrigger the {C:attention}rightmost scoring{} card",
+          "{C:attention}#1#{} times for each {C:attention}empty{} Joker slot",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
