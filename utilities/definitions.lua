@@ -385,7 +385,8 @@ PB_UTIL.ENABLED_MINOR_ARCANA = {
 PB_UTIL.ENABLED_EGO_GIFTS = {
   'dark_vestige',
   'imposed_weight',
-  'phlebotomy_pack'
+  'phlebotomy_pack',
+  'smokes_and_wires'
 }
 
 PB_UTIL.ENABLED_SPECTRALS = {

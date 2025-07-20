@@ -1947,6 +1947,13 @@ return {
           "{C:blue}+#1#{} hand per round",
         }
       },
+      c_paperback_smokes_and_wires = {
+        name = "Smokes and Wires",
+        text = {
+          "{X:red,C:white}X#1#{} Mult on {C:attention}final",
+          "{C:attention}hand{} of round",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
