@@ -384,7 +384,8 @@ PB_UTIL.ENABLED_MINOR_ARCANA = {
 
 PB_UTIL.ENABLED_EGO_GIFTS = {
   'dark_vestige',
-  'imposed_weight'
+  'imposed_weight',
+  'phlebotomy_pack'
 }
 
 PB_UTIL.ENABLED_SPECTRALS = {
@@ -783,6 +784,8 @@ if PB_UTIL.config.ego_gifts_enabled then
           return PB_UTIL.sin_debuff(sin, vars)
         end
       end
+
+      return self:ego_gift_calc(card, context)
     end,
 
     set_badges = function(self, card, badges)
@@ -795,12 +798,15 @@ if PB_UTIL.config.ego_gifts_enabled then
 
     add_to_deck = function(self, card, from_debuff)
       PB_UTIL.set_sell_value(card, 0)
+      local dupe = false
       for i, v in ipairs(G.consumeables.cards) do
-        if v.config.key == card.config.key and v.ability.sin ~= 'none' and v ~= card then
-          print('dupe EGO Gift found')
-          SMODS.destroy_cards({ card })
-          PB_UTIL.try_spawn_card({ key = 'c_paperback_dark_vestige' })
+        if v.config.center.key == card.config.center.key and v.ability.sin ~= 'none' and card.ability.sin ~= 'none' and v ~= card then
+          dupe = true
         end
+      end
+      if dupe then
+        SMODS.destroy_cards({ card })
+        PB_UTIL.try_spawn_card({ key = 'c_paperback_dark_vestige', instant = true })
       end
     end,
     can_use = function(self, card)

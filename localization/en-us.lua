@@ -1941,6 +1941,12 @@ return {
           "{C:attention}#1#{} times for each {C:attention}empty{} Joker slot",
         }
       },
+      c_paperback_phlebotomy_pack = {
+        name = "Phlebotomy Pack",
+        text = {
+          "{C:blue}+#1#{} hand per round",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
@@ -2264,7 +2270,8 @@ return {
       paperback_sin_wrath = {
         name = "Wrath",
         text = {
-          "When sold, {C:attention}destroy{} all other held {C:attention}consumables"
+          "When sold, {C:attention}destroy{}",
+          "all held {C:attention}consumables"
         }
       },
       paperback_sin_lust = {

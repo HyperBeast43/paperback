@@ -75,7 +75,8 @@ if PB_UTIL.config.ego_gifts_enabled then
     key           = 'ego_gift',
     prefix_config = { key = true },
     atlas         = "ego_gift_atlas",
-    pos           = { x = 7, y = 1 }
+    pos           = { x = 7, y = 1 },
+    no_overlay    = true,
   }
 
   -- Register E.G.O Gift cards
