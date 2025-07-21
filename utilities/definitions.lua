@@ -386,7 +386,8 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'dark_vestige',
   'imposed_weight',
   'phlebotomy_pack',
-  'smokes_and_wires'
+  'smokes_and_wires',
+  'coffee_and_cranes',
 }
 
 PB_UTIL.ENABLED_SPECTRALS = {

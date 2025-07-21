@@ -1954,6 +1954,13 @@ return {
           "{C:attention}hand{} of round",
         }
       },
+      c_paperback_coffee_and_cranes = {
+        name = "Coffee and Cranes",
+        text = {
+          "{X:red,C:white}X#1#{} Mult on {C:attention}final",
+          "{C:attention}hand{} of round",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {

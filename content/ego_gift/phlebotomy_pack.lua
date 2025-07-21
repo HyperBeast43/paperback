@@ -10,7 +10,15 @@ PB_UTIL.EGO_Gift {
 
   ego_gift_calc = function(self, card, context)
     if context.setting_blind then
-      ease_hands_played(card.ability.extra.a_hand)
+      G.E_MANAGER:add_event(Event({
+        func = function()
+          ease_hands_played(card.ability.a_hand)
+          card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil,
+            { message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.a_hand } } })
+          return true
+        end
+      }))
+      return nil, true
     end
   end,
 
