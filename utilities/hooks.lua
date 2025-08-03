@@ -232,3 +232,20 @@ function G.FUNCS.get_poker_hand_info(_cards)
 
   return text, loc_disp_text, poker_hands, scoring_hand, disp_text
 end
+
+-- When calculating the sell cost for an E.G.O. Gift, override it to 0
+-- None and Pride respectively get set to 5 and -15
+local set_cost_ref = Card.set_cost
+function Card.set_cost(self)
+  local ret = set_cost_ref(self)
+  if self.added_to_deck then
+    if self.config.center.set == "paperback_ego_gift" and self.ability.sin then
+      if self.ability.sin == 'pride' or self.ability.sin == 'none' then
+        self.sell_cost = PB_UTIL.EGO_GIFT_SINS[self.ability.sin][1]
+      else
+        self.sell_cost = 0
+      end
+    end
+    return ret
+  end
+end

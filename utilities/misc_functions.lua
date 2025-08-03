@@ -1095,7 +1095,5 @@ function PB_UTIL.sin_debuff(type, vars)
       end
     }
   }
-  print(type)
-  print(returns[type])
   return returns[type]
 end

@@ -378,8 +378,9 @@ function PB_UTIL.paperclip_tooltip(type)
   }
 end
 
---- @param type
---- @return table | nil
+--- @alias Sin "none" | "wrath" | "lust" | "sloth" | "gluttony" | "gloom" | "pride" | "envy"
+--- @param type Sin
+--- @return table | nil Tooltip
 function PB_UTIL.sin_tooltip(type)
   local key = 'paperback_sin_' .. type
   local vars = PB_UTIL.EGO_GIFT_SINS[type]

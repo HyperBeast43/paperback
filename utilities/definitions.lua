@@ -730,7 +730,7 @@ if PB_UTIL.config.minor_arcana_enabled then
 end
 
 -- Define a Booster object with certain shared properties for E.G.O. Gift packs
-if PB_UTIL.config.minor_arcana_enabled then
+if PB_UTIL.config.ego_gifts_enabled then
   PB_UTIL.EGO_GiftBooster = SMODS.Booster:extend {
     group_key = 'paperback_ego_gift_pack',
     kind = 'paperback_ego_gift',
@@ -766,6 +766,63 @@ end
 
 -- Define custom EGO_Gifts object with shared properties for handling common behavior
 if PB_UTIL.config.ego_gifts_enabled then
+  -- Vars for Calc and Loc
+  PB_UTIL.EGO_GIFT_SINS = {
+    none = { 5 },
+    wrath = {},
+    lust = { -2 },
+    sloth = {},
+    gluttony = {},
+    gloom = { 1.5 },
+    pride = { -15 },
+    envy = { -1 },
+  }
+  -- Tables for the standardized sin calc
+  PB_UTIL.SIN_DEBUFF = {
+    none = {},
+    wrath = {
+      message = localize('paperback_destroyed_ex'),
+      func = function()
+        SMODS.destroy_cards(G.consumeables.cards, false, true)
+      end
+    },
+    lust = {
+      func = function()
+        local _hand, _tally = nil, 1
+        for k, v in ipairs(G.handlist) do
+          if G.GAME.hands[v].visible and G.GAME.hands[v].played >= _tally then
+            _hand = v
+            _tally = G.GAME.hands[v].played
+          end
+        end
+        if _hand then
+          update_hand_text(
+            { sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
+            {
+              handname = localize(_hand, 'poker_hands'),
+              chips = G.GAME.hands[_hand].chips,
+              mult = G.GAME.hands[_hand].mult,
+              level = G.GAME.hands[_hand].level
+            }
+          )
+
+
+          level_up_hand(nil, _hand, PB_UTIL.EGO_GIFT_SINS.lust[1])
+
+          update_hand_text(
+            { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
+            { mult = 0, chips = 0, handname = '', level = '' }
+          )
+
+          return nil, true
+        else
+          return {
+            message = localize('k_nope_ex')
+          }
+        end
+      end
+    },
+  }
   --- @type SMODS.Consumable
   PB_UTIL.EGO_Gift = SMODS.Consumable:extend {
     badge_text_colour = G.C.PAPERBACK_EGO_GIFT_YELLOW,
@@ -782,19 +839,31 @@ if PB_UTIL.config.ego_gifts_enabled then
       if context.selling_self then
         if card.ability.sin then
           local sin = card.ability.sin
-          local vars = PB_UTIL.sin_tooltip(sin).vars
-          return PB_UTIL.sin_debuff(sin, vars)
+          return PB_UTIL.SIN_DEBUFF[sin]
         end
       end
 
-      return self:ego_gift_calc(card, context)
+      if self.ego_gift_calc then
+        return self:ego_gift_calc(card, context)
+      end
+    end,
+    set_card_type_badge = function(self, card, badges)
+      badges[#badges + 1] = create_badge(localize('k_paperback_ego_gift'), G.C.PAPERBACK_EGO_GIFT_RED,
+        G.C.PAPERBACK_EGO_GIFT_YELLOW, 1.2)
     end,
 
     set_badges = function(self, card, badges)
       if card.ability.sin then
         local badge_key = 'k_paperback_ego_sin_' .. card.ability.sin
-        badges[#badges + 1] = create_badge(localize(badge_key),
-          G.C['PAPERBACK_SIN_' .. string.upper(card.ability.sin)], G.C.BLACK, 1.2)
+        if card.ability.sin == 'none' then
+          badges[#badges + 1] = create_badge(localize(badge_key), G.C
+            ['PAPERBACK_SIN_' .. string.upper(card.ability.sin)],
+            G.C.PAPERBACK_BLACK, 1.2)
+        else
+          badges[#badges + 1] = create_badge(localize(badge_key), G.C
+            ['PAPERBACK_SIN_' .. string.upper(card.ability.sin)],
+            G.C.WHITE, 1.2)
+        end
       end
     end,
 
@@ -807,31 +876,17 @@ if PB_UTIL.config.ego_gifts_enabled then
         end
       end
       if dupe then
+        local edition = card.ability.edition.key
+        local sticker = card.ability.sticker
+        local vestige = SMODS.add_card { key = 'c_paperback_dark_vestige', edition = edition }
+        vestige:add_sticker(sticker)
         SMODS.destroy_cards({ card })
-        PB_UTIL.try_spawn_card({ key = 'c_paperback_dark_vestige', instant = true })
       end
     end,
     can_use = function(self, card)
       return false
     end
   }
-  -- When calculating the sell cost for a card, if Union Card is present then override it
-  -- and set the sell cost to 0
-  local set_cost_ref = Card.set_cost
-  function Card.set_cost(self)
-    local ret = set_cost_ref(self)
-    if self.added_to_deck then
-      -- If this card is Union Card set sell cost to 0
-      if self.config.center.set == "paperback_ego_gift" and self.ability.sin then
-        if self.ability.sin == 'lust' or self.ability.sin == 'none' then
-          self.sell_cost = PB_UTIL.EGO_GIFT_SINS[self.ability.sin][1]
-        else
-          self.sell_cost = 0
-        end
-      end
-      return ret
-    end
-  end
 end
 
 if PB_UTIL.config.suits_enabled then
@@ -872,16 +927,4 @@ PB_UTIL.ENABLED_PAPERCLIPS = {
   "white_clip",
   "yellow_clip",
   "gold_clip",
-}
-
--- Vars for Calc and Loc
-PB_UTIL.EGO_GIFT_SINS = {
-  ["none"] = { 5 },
-  ["pride"] = { -15 },
-  ["gloom"] = { 1.5 },
-  ["wrath"] = {},
-  ["envy"] = { -1 },
-  ["lust"] = { 2 },
-  ["gluttony"] = {},
-  ["sloth"] = {},
 }

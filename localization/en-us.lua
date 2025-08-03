@@ -1957,8 +1957,9 @@ return {
       c_paperback_coffee_and_cranes = {
         name = "Coffee and Cranes",
         text = {
-          "{X:red,C:white}X#1#{} Mult on {C:attention}final",
-          "{C:attention}hand{} of round",
+          "Increase interest by {C:money}$#1#{} for",
+          "every {C:money}$#2#{} owned up to {C:money}$#3#{}",
+          "{C:inactive}(Currently {C:money}$#4#{C:inactive}){}"
         }
       },
     },
@@ -2291,7 +2292,7 @@ return {
       paperback_sin_lust = {
         name = "Lust",
         text = {
-          "When sold, {C:attention}lose #2# levels{} in {C:attention}most played hand"
+          "When sold, {C:attention}lose #1# levels{} in {C:attention}most played hand"
         }
       },
       -- Minor Arcana

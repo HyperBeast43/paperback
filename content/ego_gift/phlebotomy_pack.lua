@@ -10,11 +10,16 @@ PB_UTIL.EGO_Gift {
 
   ego_gift_calc = function(self, card, context)
     if context.setting_blind then
+      local selected_card = context.blueprint_card or card
       G.E_MANAGER:add_event(Event({
         func = function()
           ease_hands_played(card.ability.a_hand)
-          card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil,
-            { message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.a_hand } } })
+          SMODS.calculate_effect({
+              message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.a_hand } },
+              colour = G.C.BLUE,
+              instant = true
+            },
+            selected_card)
           return true
         end
       }))
