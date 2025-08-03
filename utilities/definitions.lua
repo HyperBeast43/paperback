@@ -770,7 +770,7 @@ if PB_UTIL.config.ego_gifts_enabled then
   PB_UTIL.EGO_GIFT_SINS = {
     none = { 5 },
     wrath = {},
-    lust = { -2 },
+    lust = { 2 },
     sloth = {},
     gluttony = {},
     gloom = { 1.5 },
@@ -807,7 +807,7 @@ if PB_UTIL.config.ego_gifts_enabled then
           )
 
 
-          level_up_hand(nil, _hand, PB_UTIL.EGO_GIFT_SINS.lust[1])
+          level_up_hand(nil, _hand, false, -PB_UTIL.EGO_GIFT_SINS.lust[1])
 
           update_hand_text(
             { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
