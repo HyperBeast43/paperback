@@ -1962,6 +1962,15 @@ return {
           "{C:inactive}(Currently {C:money}$#4#{C:inactive}){}"
         }
       },
+      c_paperback_fiery_down = {
+        name = "Fiery Down",
+        text = {
+          "If {C:attention}#1#{} {C:inactive}(#2#){} cards",
+          "have been {C:attention}discarded,",
+          "upgrade next played",
+          "{C:attention}poker hand"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
@@ -2292,7 +2301,7 @@ return {
       paperback_sin_lust = {
         name = "Lust",
         text = {
-          "When sold, {C:attention}lose #1# levels{} in {C:attention}most played hand"
+          "When sold, downgrade {C:attention}most played hand{} by {C:attention}#1# levels{}"
         }
       },
       -- Minor Arcana

@@ -388,6 +388,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'phlebotomy_pack',
   'smokes_and_wires',
   'coffee_and_cranes',
+  'fiery_down',
 }
 
 PB_UTIL.ENABLED_SPECTRALS = {
