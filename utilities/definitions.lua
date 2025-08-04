@@ -798,24 +798,7 @@ if PB_UTIL.config.ego_gifts_enabled then
           end
         end
         if _hand then
-          update_hand_text(
-            { sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
-            {
-              handname = localize(_hand, 'poker_hands'),
-              chips = G.GAME.hands[_hand].chips,
-              mult = G.GAME.hands[_hand].mult,
-              level = G.GAME.hands[_hand].level
-            }
-          )
-
-
-          level_up_hand(nil, _hand, false, -PB_UTIL.EGO_GIFT_SINS.lust[1])
-
-          update_hand_text(
-            { sound = 'button', volume = 0.7, pitch = 1.1, delay = 0 },
-            { mult = 0, chips = 0, handname = '', level = '' }
-          )
-
+          SMODS.smart_level_up_hand(nil, _hand, false, -PB_UTIL.EGO_GIFT_SINS.lust[1])
           return nil, true
         else
           return {
