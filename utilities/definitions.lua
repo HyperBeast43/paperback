@@ -383,12 +383,13 @@ PB_UTIL.ENABLED_MINOR_ARCANA = {
 }
 
 PB_UTIL.ENABLED_EGO_GIFTS = {
-  'dark_vestige',
   'imposed_weight',
   'phlebotomy_pack',
   'smokes_and_wires',
   'coffee_and_cranes',
   'fiery_down',
+  'decamillennial_stewpot',
+  'dark_vestige',
 }
 
 PB_UTIL.ENABLED_SPECTRALS = {

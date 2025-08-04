@@ -1971,6 +1971,13 @@ return {
           "{C:attention}poker hand"
         }
       },
+      c_paperback_decamillennial_stewpot = {
+        name = "Decamillenial Stewpot",
+        text = {
+          "If {C:attention}first played hand{} of round",
+          "is a {C:attention}single{} card, destroy it",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
