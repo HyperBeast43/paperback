@@ -1978,6 +1978,12 @@ return {
           "is a {C:attention}single{} card, destroy it",
         }
       },
+      c_paperback_downpour = {
+        name = "Downpour",
+        text = {
+          "Played hands lower the {C:attention}blind requirement{} by {C:attention}5%",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {

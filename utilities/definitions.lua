@@ -389,6 +389,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'coffee_and_cranes',
   'fiery_down',
   'decamillennial_stewpot',
+  'downpour',
   'dark_vestige',
 }
 
@@ -866,6 +867,10 @@ if PB_UTIL.config.ego_gifts_enabled then
         local vestige = SMODS.add_card { key = 'c_paperback_dark_vestige', edition = edition }
         vestige:add_sticker(sticker)
         SMODS.destroy_cards({ card })
+      end
+
+      if card.ability.sin and card.ability.sin == 'sloth' then
+        card.ability.eternal = true
       end
     end,
     can_use = function(self, card)

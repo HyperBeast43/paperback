@@ -20,7 +20,8 @@ function Game.init_game_object(self)
 
     weather_radio_hand = 'High Card',
     joke_master_hand = 'High Card',
-    da_capo_suit = 'Clubs'
+    da_capo_suit = 'Clubs',
+    skipped_blind = false,
   }
   return ret
 end
@@ -248,4 +249,13 @@ function Card.set_cost(self)
     end
     return ret
   end
+end
+
+local can_sell_ref = Card.can_sell_card
+function Card.can_sell_card(self, context)
+  if self.ability.sin and self.ability.sin == 'sloth' then
+    return G.GAME.paperback.skipped_blind
+  end
+
+  return can_sell_ref(self, context)
 end
