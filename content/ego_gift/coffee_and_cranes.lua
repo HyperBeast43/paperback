@@ -13,19 +13,15 @@ PB_UTIL.EGO_Gift {
 
 
 
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = PB_UTIL.sin_tooltip(card.ability.sin)
-
+  ego_loc_vars = function(self, info_queue, card)
     card.ability.int_mod = math.max(0,
       math.min(25,
         card.ability.a_int * math.floor(G.GAME.dollars / card.ability.threshold)))
     return {
-      vars = {
-        card.ability.a_int,
-        card.ability.threshold,
-        card.ability.int_max,
-        card.ability.int_mod
-      }
+      card.ability.a_int,
+      card.ability.threshold,
+      card.ability.int_max,
+      card.ability.int_mod
     }
   end,
   ego_gift_calc = function(self, card, context)

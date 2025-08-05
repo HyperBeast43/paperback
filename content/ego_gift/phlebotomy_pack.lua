@@ -27,13 +27,9 @@ PB_UTIL.EGO_Gift {
     end
   end,
 
-  loc_vars = function(self, info_queue, card)
-    info_queue[#info_queue + 1] = PB_UTIL.sin_tooltip(card.ability.sin)
-
+  ego_loc_vars = function(self, info_queue, card)
     return {
-      vars = {
-        card.ability.a_hand
-      }
+      card.ability.a_hand
     }
   end,
 }
