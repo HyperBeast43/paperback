@@ -2317,6 +2317,12 @@ return {
           "When sold, downgrade {C:attention}most played hand{} by {C:attention}#1# levels{}"
         }
       },
+      paperback_sin_sloth = {
+        name = "Sloth",
+        text = {
+          "Can only be sold directly after skipping a {C:attention}Blind"
+        }
+      },
       -- Minor Arcana
       p_paperback_minor_arcana_normal = {
         name = "Minor Arcana Pack",
