@@ -822,7 +822,6 @@ if PB_UTIL.config.ego_gifts_enabled then
 
       if self.ego_loc_vars then
         local vars = self.ego_loc_vars(self, info_queue, card)
-        print(vars)
         return {
           vars = vars
         }
