@@ -3,8 +3,8 @@ PB_UTIL.EGO_Gift {
   config = {
     sin = 'lust',
     a_int = 1,
-    int_max = 25,
-    threshold = 3,
+    int_max = 5,
+    threshold = 10,
     int_mod = 0,
     previous_int = 0,
   },
@@ -15,7 +15,7 @@ PB_UTIL.EGO_Gift {
 
   ego_loc_vars = function(self, info_queue, card)
     card.ability.int_mod = math.max(0,
-      math.min(25,
+      math.min(card.ability.int_max,
         card.ability.a_int * math.floor(G.GAME.dollars / card.ability.threshold)))
     return {
       card.ability.a_int,
@@ -29,7 +29,7 @@ PB_UTIL.EGO_Gift {
       G.GAME.interest_amount = G.GAME.interest_amount - card.ability.previous_int
 
       card.ability.int_mod = math.max(0,
-        math.min(25,
+        math.min(card.ability.int_max,
           card.ability.a_int * math.floor(G.GAME.dollars / card.ability.threshold)))
 
       G.GAME.interest_amount = G.GAME.interest_amount + card.ability.int_mod
