@@ -10,7 +10,7 @@ PB_UTIL.EGO_Gift {
 
   ego_loc_vars = function(self, info_queue, card)
     return {
-      card.ability.blind_mod,
+      card.ability.blind_mod * 100,
     }
   end,
 
