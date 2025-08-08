@@ -1984,6 +1984,14 @@ return {
           "Played hands lower the {C:attention}blind requirement{} by {C:attention}#1#%",
         }
       },
+      c_paperback_rusty_coin = {
+        name = "Rusty Commemorative Coin",
+        text = {
+          "If {C:attention}first played hand{} of round",
+          "is a {C:attention}single{} card,",
+          "add a random {C:attention}seal{} to it"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {

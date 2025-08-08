@@ -390,6 +390,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'fiery_down',
   'decamillennial_stewpot',
   'downpour',
+  'rusty_coin',
   'dark_vestige',
 }
 
@@ -786,7 +787,7 @@ if PB_UTIL.config.ego_gifts_enabled then
     wrath = {
       message = localize('paperback_destroyed_ex'),
       func = function()
-        SMODS.destroy_cards(G.consumeables.cards, false, true)
+        SMODS.destroy_cards(G.consumeables.cards, false, false)
       end
     },
     lust = {
@@ -801,10 +802,6 @@ if PB_UTIL.config.ego_gifts_enabled then
         if _hand then
           SMODS.smart_level_up_hand(nil, _hand, false, -PB_UTIL.EGO_GIFT_SINS.lust[1])
           return nil, true
-        else
-          return {
-            message = localize('k_nope_ex')
-          }
         end
       end
     },
@@ -869,15 +866,8 @@ if PB_UTIL.config.ego_gifts_enabled then
         end
       end
       if dupe then
-        local edition = card.ability.edition.key
-        local sticker = card.ability.sticker
-        local vestige = SMODS.add_card { key = 'c_paperback_dark_vestige', edition = edition }
-        vestige:add_sticker(sticker)
+        local vestige = SMODS.add_card { key = 'c_paperback_dark_vestige' }
         SMODS.destroy_cards({ card })
-      end
-
-      if card.ability.sin and card.ability.sin == 'sloth' then
-        card.ability.eternal = true
       end
     end,
     can_use = function(self, card)
