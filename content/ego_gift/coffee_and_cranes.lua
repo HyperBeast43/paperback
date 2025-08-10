@@ -2,43 +2,29 @@ PB_UTIL.EGO_Gift {
   key = 'coffee_and_cranes',
   config = {
     sin = 'lust',
-    a_int = 1,
-    int_max = 5,
-    threshold = 10,
-    int_mod = 0,
-    previous_int = 0,
+    max = 10,
+    dollars = 1,
+    threshold = 5,
   },
+
   atlas = 'ego_gift_atlas',
   pos = { x = 1, y = 0 },
 
-
-
   ego_loc_vars = function(self, info_queue, card)
-    card.ability.int_mod = math.max(0,
-      math.min(card.ability.int_max,
-        card.ability.a_int * math.floor(G.GAME.dollars / card.ability.threshold)))
+    local dollar_bonus = math.min(card.ability.max,
+      math.max(0,
+        card.ability.dollars * math.floor(G.GAME.dollars / card.ability.threshold)))
     return {
-      card.ability.a_int,
-      card.ability.threshold,
-      card.ability.int_max,
-      card.ability.int_mod
+      card.ability.dollars,
+      card.ability.max,
+      dollar_bonus
     }
   end,
-  ego_gift_calc = function(self, card, context)
-    if context.end_of_round and context.cardarea == G.consumeables then
-      G.GAME.interest_amount = G.GAME.interest_amount - card.ability.previous_int
 
-      card.ability.int_mod = math.max(0,
-        math.min(card.ability.int_max,
-          card.ability.a_int * math.floor(G.GAME.dollars / card.ability.threshold)))
-
-      G.GAME.interest_amount = G.GAME.interest_amount + card.ability.int_mod
-
-      card.ability.previous_int = card.ability.int_mod
-    end
-  end,
-
-  remove_from_deck = function(self, card, from_debuff)
-    G.GAME.interest_amount = G.GAME.interest_amount - card.ability.previous_int
+  calc_dollar_bonus = function(self, card)
+    local dollar_bonus = math.min(card.ability.max,
+      math.max(0,
+        card.ability.dollars * math.floor(G.GAME.dollars / card.ability.threshold)))
+    return dollar_bonus
   end
 }

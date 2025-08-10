@@ -1957,8 +1957,9 @@ return {
       c_paperback_coffee_and_cranes = {
         name = "Coffee and Cranes",
         text = {
-          "Increase interest by {C:money}$#1#{} for",
-          "every {C:money}$#2#{} owned up to {C:money}$#3#{}",
+          "For every {C:money}$#1#{} owned",
+          "at the end of round, earn {C:money}$#2#{}",
+          "up to {C:money}$#3#{}",
           "{C:inactive}(Currently {C:money}$#4#{C:inactive}){}"
         }
       },
