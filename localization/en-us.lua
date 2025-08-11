@@ -1996,10 +1996,19 @@ return {
       c_paperback_ragged_umbrella = {
         name = "Ragged Umbrella",
         text = {
-          "This E.G.O. Gift gains {C:chips}+#1#{} Chips",
+          "This {C:paperback_ego_gift}E.G.O. Gift{} gains {C:chips}+#1#{} Chips",
           "every time a {C:attention}played hand",
           "does not defeat a {C:attention}Blind",
           "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        }
+      },
+      c_paperback_thrill = {
+        name = "Thrill",
+        text = {
+          "If no {C:attention}hands{} have been played, this",
+          "{C:paperback_ego_gift}E.G.O. Gift{} gives {X:mult,C:white}X#1#{} Mult",
+          "for every used {C:attention}discard{} this {C:attention}round",
+          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
         }
       },
     },
@@ -2339,6 +2348,12 @@ return {
         name = "Sloth",
         text = {
           "Can only be sold directly after skipping a {C:attention}Blind"
+        }
+      },
+      paperback_sin_gluttony = {
+        name = "Gluttony",
+        text = {
+          "When sold, add {C:paperback_perishable}Perishable{} to a random {C:attention}Joker{}"
         }
       },
       -- Minor Arcana

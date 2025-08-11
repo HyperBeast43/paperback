@@ -392,6 +392,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'downpour',
   'rusty_coin',
   'ragged_umbrella',
+  'thrill',
   'dark_vestige',
 }
 
@@ -806,6 +807,23 @@ if PB_UTIL.config.ego_gifts_enabled then
         end
       end
     },
+    gluttony = {
+      func = function()
+        local compatible = {}
+        local perish = nil
+        for _, target in ipairs(G.jokers.cards) do
+          if target.config.center.perishable_compat and not (target.ability.eternal or target.ability.perishable) then
+            compatible[#compatible + 1] = target
+          end
+        end
+
+        if next(G.jokers.cards) and next(compatible) then
+          perish = pseudorandom_element(compatible, pseudoseed('paperback_gluttony'))
+          SMODS.Stickers["perishable"]:apply(perish, true)
+          perish:juice_up()
+        end
+      end
+    }
   }
   --- @type SMODS.Consumable
   PB_UTIL.EGO_Gift = SMODS.Consumable:extend {
