@@ -391,6 +391,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'decamillennial_stewpot',
   'downpour',
   'rusty_coin',
+  'ragged_umbrella',
   'dark_vestige',
 }
 

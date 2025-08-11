@@ -1993,6 +1993,15 @@ return {
           "add a random {C:attention}seal{} to it"
         }
       },
+      c_paperback_ragged_umbrella = {
+        name = "Ragged Umbrella",
+        text = {
+          "This E.G.O. Gift gains {C:chips}+#1#{} Chips",
+          "every time a {C:attention}played hand",
+          "does not defeat a {C:attention}Blind",
+          "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
