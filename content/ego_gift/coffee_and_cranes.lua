@@ -15,6 +15,7 @@ PB_UTIL.EGO_Gift {
       math.max(0,
         card.ability.dollars * math.floor(G.GAME.dollars / card.ability.threshold)))
     return {
+      card.ability.threshold,
       card.ability.dollars,
       card.ability.max,
       dollar_bonus
