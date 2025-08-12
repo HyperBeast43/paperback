@@ -20,7 +20,7 @@ PB_UTIL.EGO_Gift {
         message = localize {
           type = 'variable',
           key = 'a_xmult',
-          vars = { card.ability.a_xmult * (2 + G.GAME.current_round.discards_used) }
+          vars = { card.ability.a_xmult * (3 + G.GAME.current_round.discards_used) }
         },
         colour = G.C.MULT
       }
