@@ -394,6 +394,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'ragged_umbrella',
   'thrill',
   'disk_fragment',
+  'death_seeker',
   'dark_vestige',
 }
 

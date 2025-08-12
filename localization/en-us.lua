@@ -2019,6 +2019,12 @@ return {
           "if none are currently owned",
         }
       },
+      c_paperback_death_seeker = {
+        name = "Deathseeker",
+        text = {
+          "{C:attention}Enhanced{} cards give {C:mult}+Mult{} equal to their {C:attention}rank{} when scored",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
