@@ -393,6 +393,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'rusty_coin',
   'ragged_umbrella',
   'thrill',
+  'disk_fragment',
   'dark_vestige',
 }
 

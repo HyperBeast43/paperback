@@ -2011,6 +2011,14 @@ return {
           "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
         }
       },
+      c_paperback_disk_fragment = {
+        name = "Disk Fragment",
+        text = {
+          "When {C:attention}Small Blind{} or {C:attention}Big Blind{} is selected,",
+          "create {C:attention}#1#{} {C:dark_edition}Negative{} {C:planet}Planet{} cards",
+          "if none are currently owned",
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
