@@ -2025,6 +2025,14 @@ return {
           "{C:attention}Enhanced{} cards give {C:mult}+Mult{} equal to their {C:attention}rank{} when scored",
         }
       },
+      c_paperback_pendant_of_nostalgia = {
+        name = "Pendant of Nostalgia",
+        text = {
+          "Whenever a {C:attention}playing card{} is destroyed, this {C:paperback_ego_gift}E.G.O. Gift",
+          "creates a random {C:tarot}Tarot{} or {C:paperback_minor_arcana}Minor Arcana{} card",
+          "{C:inactive}(Must have room)"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
@@ -2368,6 +2376,12 @@ return {
         name = "Gluttony",
         text = {
           "When sold, add {C:paperback_perishable}Perishable{} to a random {C:attention}Joker{}"
+        }
+      },
+      paperback_sin_gloom = {
+        name = "Gloom",
+        text = {
+          "When sold, multiply all {C:attention}Base Blind{} sizes by {C:attention}X#1#{}"
         }
       },
       -- Minor Arcana

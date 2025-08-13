@@ -395,6 +395,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'thrill',
   'disk_fragment',
   'death_seeker',
+  'pendant_of_nostalgia',
   'dark_vestige',
 }
 
@@ -824,6 +825,11 @@ if PB_UTIL.config.ego_gifts_enabled then
           SMODS.Stickers["perishable"]:apply(perish, true)
           perish:juice_up()
         end
+      end
+    },
+    gloom = {
+      func = function()
+        G.GAME.paperback.blind_multiplier = G.GAME.paperback.blind_multiplier * PB_UTIL.EGO_GIFT_SINS.gloom[1]
       end
     }
   }

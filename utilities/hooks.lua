@@ -22,6 +22,7 @@ function Game.init_game_object(self)
     joke_master_hand = 'High Card',
     da_capo_suit = 'Clubs',
     skipped_blind = false,
+    blind_multiplier = 1,
   }
   return ret
 end
