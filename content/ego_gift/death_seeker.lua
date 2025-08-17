@@ -5,6 +5,7 @@ PB_UTIL.EGO_Gift {
   },
   atlas = 'ego_gift_atlas',
   pos = { x = 3, y = 2 },
+  soul_pos = { x = 3, y = 5 },
 
   ego_gift_calc = function(self, card, context)
     if context.individual and context.cardarea == G.play then

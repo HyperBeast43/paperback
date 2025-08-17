@@ -9,7 +9,7 @@ PB_UTIL.EGO_Gift {
 
   atlas = 'ego_gift_atlas',
   pos = { x = 1, y = 0 },
-
+  soul_pos = { x = 1, y = 3 },
   ego_loc_vars = function(self, info_queue, card)
     local dollar_bonus = math.min(card.ability.max,
       math.max(0,

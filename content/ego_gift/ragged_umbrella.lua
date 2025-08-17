@@ -7,6 +7,7 @@ PB_UTIL.EGO_Gift {
   },
   atlas = 'ego_gift_atlas',
   pos = { x = 2, y = 2 },
+  soul_pos = { x = 2, y = 5 },
 
 
   ego_loc_vars = function(self, info_queue, card)

@@ -6,6 +6,7 @@ PB_UTIL.EGO_Gift {
   },
   atlas = 'ego_gift_atlas',
   pos = { x = 0, y = 0 },
+  soul_pos = { x = 0, y = 3 },
 
   ego_gift_calc = function(self, card, context)
     if context.repetition and context.scoring_hand then
