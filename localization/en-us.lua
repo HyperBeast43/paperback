@@ -2033,6 +2033,14 @@ return {
           "{C:inactive}(Must have room)"
         }
       },
+      c_paperback_blue_lighter = {
+        name = "Blue Zippo Lighter",
+        text = {
+          "If {C:attention}score catches fire{}, {C:attention}convert",
+          "a card held in hand into",
+          "{C:attention}first{} card of scored hand"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {

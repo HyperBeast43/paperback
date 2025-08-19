@@ -396,6 +396,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'disk_fragment',
   'death_seeker',
   'pendant_of_nostalgia',
+  'blue_lighter',
   'dark_vestige',
 }
 
