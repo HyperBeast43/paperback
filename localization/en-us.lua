@@ -2041,6 +2041,13 @@ return {
           "{C:attention}first{} card of scored hand"
         }
       },
+      c_paperback_broken_glasses = {
+        name = "Broken Glasses",
+        text = {
+          "Any time a card is destoyed, create {C:attention}two{} copies",
+          "{C:green}#1#{} in {C:green}#2#{} chance of {C:red}self destructing{} after."
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
