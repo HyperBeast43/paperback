@@ -2399,6 +2399,13 @@ return {
           "When sold, multiply all {C:attention}Base Blind{} sizes by {C:attention}X#1#{}"
         }
       },
+      p_paperback_ego_gift_normal = {
+        name = "E.G.O. Gift Extraction",
+        text = {
+          "Choose {C:attention}#1#{} of up to",
+          "{C:attention}#2#{C:paperback_ego_gift} E.G.O Gifts{}",
+        },
+      },
       -- Minor Arcana
       p_paperback_minor_arcana_normal = {
         name = "Minor Arcana Pack",
