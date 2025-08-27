@@ -398,6 +398,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'pendant_of_nostalgia',
   'blue_lighter',
   'broken_glasses',
+  'nebulizer',
   'dark_vestige',
 }
 

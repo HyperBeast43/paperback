@@ -2048,6 +2048,13 @@ return {
           "{C:green}#1#{} in {C:green}#2#{} chance of {C:red}self destructing{} after."
         }
       },
+      c_paperback_nebulizer = {
+        name = "Nebulizer",
+        text = {
+          "Scored cards have a {C:green}#1#{} in {C:green}#2#{} chance",
+          "to give {X:mult,C:white}X#3#{} Mult"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
@@ -2397,6 +2404,12 @@ return {
         name = "Gloom",
         text = {
           "When sold, multiply all {C:attention}Base Blind{} sizes by {C:attention}X#1#{}"
+        }
+      },
+      paperback_sin_pride = {
+        name = "Pride",
+        text = {
+          "Always sells for {C:money}$#1#{}"
         }
       },
       p_paperback_ego_gift_normal = {
