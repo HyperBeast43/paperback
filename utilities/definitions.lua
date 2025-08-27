@@ -399,6 +399,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'blue_lighter',
   'broken_glasses',
   'nebulizer',
+  'tomorrow_fortune',
   'dark_vestige',
 }
 
@@ -899,7 +900,18 @@ if PB_UTIL.config.ego_gifts_enabled then
         local vestige = SMODS.add_card { key = 'c_paperback_dark_vestige' }
         SMODS.destroy_cards({ card })
       end
+
+      if self.ego_add then
+        self:ego_add(card, from_debuff)
+      end
     end,
+
+    remove_from_deck = function(self, card, from_debuff)
+      if self.ego_remove then
+        self:ego_remove(card, from_debuff)
+      end
+    end,
+
     can_use = function(self, card)
       return false
     end

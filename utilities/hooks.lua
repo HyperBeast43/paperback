@@ -21,8 +21,10 @@ function Game.init_game_object(self)
     weather_radio_hand = 'High Card',
     joke_master_hand = 'High Card',
     da_capo_suit = 'Clubs',
+
     skipped_blind = false,
     blind_multiplier = 1,
+    bonus_pack_size = 0,
   }
   return ret
 end

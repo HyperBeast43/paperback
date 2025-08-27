@@ -2055,6 +2055,13 @@ return {
           "to give {X:mult,C:white}X#3#{} Mult"
         }
       },
+      c_paperback_tomorrow_fortune = {
+        name = "Tomorrow's Fortune",
+        text = {
+          "All {C:attention}Booster Packs{} contain",
+          "{C:attention}1{} more card to choose from"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
