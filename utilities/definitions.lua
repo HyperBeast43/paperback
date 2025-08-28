@@ -400,6 +400,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'broken_glasses',
   'nebulizer',
   'tomorrow_fortune',
+  'fluorescent_lamp',
   'dark_vestige',
 }
 

@@ -2062,6 +2062,15 @@ return {
           "{C:attention}1{} more card to choose from"
         }
       },
+      c_paperback_fluorescent_lamp = {
+        name = "Fluorescent Lamp",
+        text = {
+          "{C:red}+#1#{} discard per round, additionally",
+          "gain {C:red}+#1#{} discard for every {C:attention}#2#",
+          "for each empty {C:attention}Joker{} slot",
+          "{C:inactive}(Currently {C:red}+#3#{C:inactive} discards)"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
