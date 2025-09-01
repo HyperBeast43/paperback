@@ -2071,6 +2071,14 @@ return {
           "{C:inactive}(Currently {C:red}+#3#{C:inactive} discards)"
         }
       },
+      c_paperback_lightning_rod = {
+        name = "Lightning Rod",
+        text = {
+          "Cards {C:attention}held in hand{}",
+          "have a {C:green}#1#{} in {C:green}#2#",
+          "chance of retriggering"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {

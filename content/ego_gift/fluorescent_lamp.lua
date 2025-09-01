@@ -34,9 +34,13 @@ PB_UTIL.EGO_Gift {
   end,
 
   ego_loc_vars = function(self, info_queue, card)
-    card.ability.total = card.ability.discards +
-        card.ability.discards *
-        math.max(0, math.floor((G.jokers.config.card_limit - #G.jokers.cards) / card.ability.threshold))
+    if G.jokers then
+      card.ability.total = card.ability.discards +
+          card.ability.discards *
+          math.max(0, math.floor((G.jokers.config.card_limit - #G.jokers.cards) / card.ability.threshold))
+    else
+      card.ability.total = card.ability.discards
+    end
     return {
       card.ability.discards,
       card.ability.threshold,

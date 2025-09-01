@@ -401,6 +401,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'nebulizer',
   'tomorrow_fortune',
   'fluorescent_lamp',
+  'lightning_rod',
   'dark_vestige',
 }
 
@@ -789,7 +790,7 @@ if PB_UTIL.config.ego_gifts_enabled then
     gluttony = {},
     gloom = { 1.5 },
     pride = { -15 },
-    envy = { -1 },
+    envy = { 1 },
   }
   -- Tables for the standardized sin calc
   PB_UTIL.SIN_DEBUFF = {
@@ -835,6 +836,11 @@ if PB_UTIL.config.ego_gifts_enabled then
     gloom = {
       func = function()
         G.GAME.paperback.blind_multiplier = G.GAME.paperback.blind_multiplier * PB_UTIL.EGO_GIFT_SINS.gloom[1]
+      end
+    },
+    envy = {
+      func = function()
+        G.hand:change_size(-PB_UTIL.EGO_GIFT_SINS.envy[1])
       end
     }
   }
