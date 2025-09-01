@@ -1982,7 +1982,8 @@ return {
       c_paperback_downpour = {
         name = "Downpour",
         text = {
-          "Played hands lower the {C:attention}blind requirement{} by {C:attention}#1#%",
+          "Played hands lower the {C:attention}blind requirement{}",
+          "by {C:attention}#1#%",
         }
       },
       c_paperback_rusty_coin = {
@@ -2022,7 +2023,8 @@ return {
       c_paperback_death_seeker = {
         name = "Deathseeker",
         text = {
-          "{C:attention}Enhanced{} cards give {C:mult}+Mult{} equal to their {C:attention}rank{} when scored",
+          "{C:attention}Enhanced{} cards give {C:mult}+Mult{}",
+          "equal to their {C:attention}rank{} when scored",
         }
       },
       c_paperback_pendant_of_nostalgia = {
@@ -2044,15 +2046,16 @@ return {
       c_paperback_broken_glasses = {
         name = "Broken Glasses",
         text = {
-          "Any time a card is destoyed, create {C:attention}two{} copies",
-          "{C:green}#1#{} in {C:green}#2#{} chance of {C:red}self destructing{} after."
+          "Any time a card is destoyed,",
+          "create {C:attention}two{} copies",
+          "{C:green}#1#{} in {C:green}#2#{} chance of {C:red}self destructing{} after"
         }
       },
       c_paperback_nebulizer = {
         name = "Nebulizer",
         text = {
-          "Scored cards have a {C:green}#1#{} in {C:green}#2#{} chance",
-          "to give {X:mult,C:white}X#3#{} Mult"
+          "Scored cards have a {C:green}#1#{} in {C:green}#2#{}",
+          "chance to give {X:mult,C:white}X#3#{} Mult"
         }
       },
       c_paperback_tomorrow_fortune = {
