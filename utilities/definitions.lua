@@ -402,6 +402,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'tomorrow_fortune',
   'fluorescent_lamp',
   'lightning_rod',
+  'chalice_of_trickle_down',
   'dark_vestige',
 }
 

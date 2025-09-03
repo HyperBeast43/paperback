@@ -2082,6 +2082,14 @@ return {
           "chance of retriggering"
         }
       },
+      c_paperback_chalice_of_trickle_down = {
+        name = "Chalice of Trickle Down",
+        text = {
+          "During {C:attention}Boss Blinds{}, gives",
+          "{C:money}${} equal to lowest rank",
+          "in {C:attention}scoring hand"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
