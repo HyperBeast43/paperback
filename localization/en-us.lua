@@ -2455,6 +2455,12 @@ return {
           "Always sells for {C:money}$#1#{}"
         }
       },
+      paperback_sin_envy = {
+        name = "Envy",
+        text = {
+          "When sold, reduce {C:attention}hand size{} by {C:red}#1#{}"
+        }
+      },
       p_paperback_ego_gift_normal = {
         name = "E.G.O. Gift Extraction",
         text = {
