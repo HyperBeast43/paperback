@@ -403,6 +403,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'fluorescent_lamp',
   'lightning_rod',
   'chalice_of_trickle_down',
+  'patrolling_flashlight',
   'dark_vestige',
 }
 
@@ -855,13 +856,16 @@ if PB_UTIL.config.ego_gifts_enabled then
 
     loc_vars = function(self, info_queue, card)
       info_queue[#info_queue + 1] = PB_UTIL.sin_tooltip(card.ability.sin)
-
+      local loc = {}
       if self.ego_loc_vars then
-        local vars = self.ego_loc_vars(self, info_queue, card)
-        return {
-          vars = vars
-        }
+        loc.vars = self.ego_loc_vars(self, info_queue, card)
       end
+
+      if self.ego_main_end then
+        loc.main_end = self.ego_main_end(self, info_queue, card)
+      end
+
+      return loc
     end,
 
     calculate = function(self, card, context)

@@ -2090,6 +2090,13 @@ return {
           "in {C:attention}scoring hand"
         }
       },
+      c_paperback_patrolling_flashlight = {
+        name = "Patrolling Flashlight",
+        text = {
+          "The first consumable used each {C:attention}Ante{}",
+          "creates a {C:attention}Energized copy{}"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
@@ -2319,7 +2326,8 @@ return {
         name = "Energized",
         text = {
           "Cannot be copied by",
-          "{C:attention}#1#{}"
+          "{C:attention}#1#{} or",
+          "{C:attention}#2#{}"
         }
       },
       paperback_temporary = {
