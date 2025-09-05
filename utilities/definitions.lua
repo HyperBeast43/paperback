@@ -404,6 +404,7 @@ PB_UTIL.ENABLED_EGO_GIFTS = {
   'lightning_rod',
   'chalice_of_trickle_down',
   'patrolling_flashlight',
+  'golden_bough',
   'dark_vestige',
 }
 
@@ -798,9 +799,8 @@ if PB_UTIL.config.ego_gifts_enabled then
   PB_UTIL.SIN_DEBUFF = {
     none = {},
     wrath = {
-      message = localize('paperback_destroyed_ex'),
       func = function()
-        SMODS.destroy_cards(G.consumeables.cards, false, false)
+        SMODS.destroy_cards(G.consumeables.cards)
       end
     },
     lust = {
@@ -844,7 +844,21 @@ if PB_UTIL.config.ego_gifts_enabled then
       func = function()
         G.hand:change_size(-PB_UTIL.EGO_GIFT_SINS.envy[1])
       end
-    }
+    },
+    madness = {
+      func = function()
+        local jokers = {}
+        for i, v in ipairs(G.jokers.cards) do
+          if not SMODS.is_eternal(v) and not v.getting_sliced then
+            jokers[#jokers + 1] = v
+          end
+        end
+        local target = pseudorandom_element(jokers, pseudoseed("golden_bough_destruction"))
+        if target then
+          SMODS.destroy_cards({ target })
+        end
+      end
+    },
   }
   --- @type SMODS.Consumable
   PB_UTIL.EGO_Gift = SMODS.Consumable:extend {

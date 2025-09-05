@@ -2097,6 +2097,14 @@ return {
           "creates a {C:attention}Energized copy{}"
         }
       },
+      c_paperback_golden_bough = {
+        name = "Golden Bough",
+        text = {
+          "Creates a random {C:dark_edition}Negative",
+          "{C:paperback_ego_gift}EGO Gift{} after each {C:attention}Boss Blind",
+          "{C:red}#1#{} Joker Slot"
+        }
+      },
     },
     Voucher = {
       v_paperback_celtic_cross = {
@@ -2459,6 +2467,13 @@ return {
         name = "Envy",
         text = {
           "When sold, reduce {C:attention}hand size{} by {C:red}#1#{}"
+        }
+      },
+      paperback_sin_madness = {
+        name = "Madness",
+        text = {
+          "When sold, {C:attention}destroy{}",
+          "a random {C:attention}Joker"
         }
       },
       p_paperback_ego_gift_normal = {

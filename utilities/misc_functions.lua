@@ -1083,17 +1083,3 @@ function PB_UTIL.chance_vars(obj, key, base_numerator, base_denominator)
     false
   )
 end
-
-function PB_UTIL.sin_debuff(type, vars)
-  local ret = {}
-  local returns = {
-    ['none'] = {},
-    ['wrath'] = {
-      message = localize('paperback_destroyed_ex'),
-      func = function()
-        SMODS.destroy_cards(G.consumeables.cards, false, true)
-      end
-    }
-  }
-  return returns[type]
-end
