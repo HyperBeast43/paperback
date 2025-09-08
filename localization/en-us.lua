@@ -2345,6 +2345,16 @@ return {
           "when round ends"
         }
       },
+      paperback_corroded = {
+        name = "Corroded",
+        text = {
+          "Can be {C:money}sold{} without",
+          "activating a {C:paperback_ego_gift}Sin",
+          "{C:red}Self-destructs{} and",
+          "activates the {C:paperback_ego_gift}Sin",
+          "after {C:attention}#1#{} Rounds"
+        }
+      },
 
       -- Paperclips
       paperback_blue_clip = {
@@ -2695,6 +2705,7 @@ return {
       paperback_determination_ex = "NGAAAHH!",
       paperback_forlorn_destruction = "Sorry...",
       paperback_freezer_ex = "Dinner Time!",
+      paperback_corroded_ex = "Corroded!",
 
       paperback_ui_requires_restart = "Requires Restart",
       paperback_ui_no_requires_restart = "Doesn't Require Restart",
@@ -2827,6 +2838,7 @@ return {
       paperback_dichrome = "Dichrome",
       paperback_energized = "Energized",
       paperback_temporary = "Temporary",
+      paperback_corroded = "Corroded",
     }
   }
 }

@@ -621,7 +621,8 @@ PB_UTIL.ENABLED_DECKS = {
 
 PB_UTIL.ENABLED_STICKERS = {
   'energized',
-  'temporary'
+  'temporary',
+  'corroded'
 }
 
 -- Define a Booster object with certain shared properties for Minor Arcana packs
@@ -885,8 +886,13 @@ if PB_UTIL.config.ego_gifts_enabled then
     calculate = function(self, card, context)
       if context.selling_self then
         if card.ability.sin then
-          local sin = card.ability.sin
-          return PB_UTIL.SIN_DEBUFF[sin]
+          if not card.ability.paperback_corroded then
+            local sin = card.ability.sin
+            return PB_UTIL.SIN_DEBUFF[sin]
+          end
+          return {
+            message = localize('paperback_corroded_ex')
+          }
         end
       end
 
