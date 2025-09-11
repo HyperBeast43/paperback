@@ -283,6 +283,8 @@ PB_UTIL.ENABLED_JOKERS = {
   "the_quiet",
   "big_misser",
   --"squall_line",
+  "fodder",
+  "the_strongest",
   "da_capo",
   --"golden_egg",
   "heretical_joker",
@@ -886,6 +888,11 @@ if PB_UTIL.config.ego_gifts_enabled then
     calculate = function(self, card, context)
       if context.selling_self then
         if card.ability.sin then
+          SMODS.calculate_context({
+            paperback = {
+              sold_ego_gift = card,
+            }
+          })
           if not card.ability.paperback_corroded then
             local sin = card.ability.sin
             return PB_UTIL.SIN_DEBUFF[sin]

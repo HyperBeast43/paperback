@@ -25,6 +25,8 @@ function Game.init_game_object(self)
     skipped_blind = false,
     blind_multiplier = 1,
     bonus_pack_size = 0,
+
+    corroded_rounds = 3
   }
   return ret
 end
@@ -239,6 +241,7 @@ end
 
 -- When calculating the sell cost for an E.G.O. Gift, override it to 0
 -- None and Pride respectively get set to 5 and -15
+-- Unless corroded
 local set_cost_ref = Card.set_cost
 function Card.set_cost(self)
   local ret = set_cost_ref(self)
@@ -257,7 +260,11 @@ end
 local can_sell_ref = Card.can_sell_card
 function Card.can_sell_card(self, context)
   if self.ability.sin and self.ability.sin == 'sloth' then
-    return G.GAME.paperback.skipped_blind
+    if self.ability.paperback_corroded then
+      return true
+    else
+      return G.GAME.paperback.skipped_blind
+    end
   end
 
   return can_sell_ref(self, context)

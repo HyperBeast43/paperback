@@ -842,6 +842,24 @@ return {
           "{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
         }
       },
+      j_paperback_fodder = {
+        name = "Fodder",
+        text = {
+          "Sell this card to {C:paperback_ego_gift}Corrode{}",
+          "the rightmost {C:paperback_ego_gift}E.G.O. Gift{}",
+        }
+      },
+      j_paperback_the_strongest = {
+        name = "The Strongest",
+        text = {
+          "This Joker gains {X:mult,C:white}X#1#{} Mult",
+          "when an {C:paperback_ego_gift}E.G.O. Gift{} is sold",
+          "or corrodes itself",
+          "C:paperback_ego_gift}Corrodes{} an {C:paperback_ego_gift}E.G.O. Gift",
+          "when Defeating a {C:attention}Boss Blind",
+          "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+        }
+      },
       j_paperback_freezer = {
         name = "Freezer",
         text = {
@@ -2352,7 +2370,8 @@ return {
           "activating a {C:paperback_ego_gift}Sin",
           "{C:red}Self-destructs{} and",
           "activates the {C:paperback_ego_gift}Sin",
-          "after {C:attention}#1#{} Rounds"
+          "after {C:attention}#1#{} Rounds",
+          "{C:inactive}({C:attention}#2#{C:inactive} Rounds left)",
         }
       },
 
