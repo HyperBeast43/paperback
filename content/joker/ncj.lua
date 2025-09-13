@@ -5,8 +5,11 @@ SMODS.Joker {
   atlas = "jokers_atlas",
   config = {
     extra = {
-      scaling = 8
+      scaling = 4
     }
+  },
+  pools = {
+    Music = true
   },
   cost = 5,
   blueprint_compat = true,
@@ -14,12 +17,13 @@ SMODS.Joker {
   perishable_compat = true,
 
   loc_vars = function(self, info_queue, card)
-    local in_shop = card.area and card.area.config.type == 'shop'
-    local sell_cost = in_shop and card.sell_cost or 0
+    local sell_cost = 0
 
     if G.jokers then
       for _, v in ipairs(G.jokers.cards) do
-        sell_cost = sell_cost + v.sell_cost
+        if v ~= card then
+          sell_cost = sell_cost + v.sell_cost
+        end
       end
     end
 
@@ -36,7 +40,9 @@ SMODS.Joker {
       local sell_cost = 0
 
       for _, v in ipairs(G.jokers.cards) do
-        sell_cost = sell_cost + v.sell_cost
+        if v ~= card then
+          sell_cost = sell_cost + v.sell_cost
+        end
       end
 
       return {

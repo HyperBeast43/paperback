@@ -3,6 +3,14 @@
 local init_game_object_ref = Game.init_game_object
 function Game.init_game_object(self)
   local ret = init_game_object_ref(self)
+
+  -- referenced code from Ortalab to get the list of secret hands
+  -- but also kinda not anymore (thanks N')
+  local secrets = {}
+  for k, v in pairs(SMODS.PokerHands) do
+    if (type(v.visible) == 'function' and not v:visible()) or v.visible == false then table.insert(secrets, k) end
+  end
+
   ret.paperback = {
     round = {
       scored_clips = 0
@@ -17,6 +25,7 @@ function Game.init_game_object(self)
     domino_ranks = {},
     jjjj_count = 0,
     banned_run_keys = {},
+    secret_hands = secrets,
 
     weather_radio_hand = 'High Card',
     joke_master_hand = 'High Card',
@@ -207,14 +216,18 @@ end
 -- accounts for Shortcut by checking for Q and 3 as well
 local get_straight_ref = get_straight
 function get_straight(hand, min_length, skip, wrap)
-  local has_king_queen = false
-  local has_2_3 = false
-  for i = 1, #hand do
-    if hand[i]:get_id() == 13 or hand[i]:get_id() == 12 then has_king_queen = true end
-    if hand[i]:get_id() == 2 or hand[i]:get_id() == 3 then has_2_3 = true end
+  local orig_straights = get_straight_ref(hand, min_length, skip, wrap)
+  local result = {}
+  for _, straight in ipairs(orig_straights) do
+    local has_king_queen = false
+    local has_2_3 = false
+    for i = 1, #straight do
+      if straight[i]:get_id() == 13 or straight[i]:get_id() == 12 then has_king_queen = true end
+      if straight[i]:get_id() == 2 or straight[i]:get_id() == 3 then has_2_3 = true end
+    end
+    if not (has_king_queen and has_2_3) then table.insert(result, straight) end
   end
-  if has_king_queen and has_2_3 then return {} end
-  return get_straight_ref(hand, min_length, skip, wrap)
+  return result
 end
 
 -- Apostle-high straight flushes get renamed to "Rapture"
@@ -238,6 +251,7 @@ function G.FUNCS.get_poker_hand_info(_cards)
 
   return text, loc_disp_text, poker_hands, scoring_hand, disp_text
 end
+
 
 -- When calculating the sell cost for an E.G.O. Gift, override it to 0
 -- None and Pride respectively get set to 5 and -15
@@ -269,3 +283,15 @@ function Card.can_sell_card(self, context)
 
   return can_sell_ref(self, context)
 end
+
+-- Used for checking for eternal compatibility against temporary and corroded
+local set_eternal_ref = Card.set_eternal
+function Card.set_eternal(self, eternal)
+  if self.ability.paperback_temporary or self.ability.paperback_corroded then
+    return false
+  else
+    local ret = set_eternal_ref(self, eternal)
+    return ret
+  end
+end
+

@@ -5,15 +5,28 @@ if not SMODS.ObjectTypes.Food then
   SMODS.ObjectType {
     key = 'Food',
     default = 'j_egg',
-    cards = {},
-    inject = function(self)
-      SMODS.ObjectType.inject(self)
-      -- Insert base game food jokers
-      for k, _ in pairs(PB_UTIL.vanilla_food) do
-        self:inject_card(G.P_CENTERS[k])
+    cards = copy_table(PB_UTIL.vanilla_food),
+  }
+end
+
+--- Initialize ObjectTypes for Minor Arcana suits
+if PB_UTIL.config.minor_arcana_enabled then
+  for _, suit in ipairs { "cups", "wands", "swords", "pentacles" } do
+    local cards = {}
+
+    for _, v in ipairs(PB_UTIL.ENABLED_MINOR_ARCANA) do
+      -- Checks if the string ends in "_of_pentacles" for example
+      if v:match(".*_of_" .. suit .. "$") then
+        cards['c_paperback_' .. v] = true
       end
     end
-  }
+
+    SMODS.ObjectType {
+      key = "paperback_minor_arcana_" .. suit,
+      default = 'c_paperback_ace_of_' .. suit,
+      cards = cards
+    }
+  end
 end
 
 ---Checks if a string is a valid paperclip key
@@ -520,7 +533,7 @@ function PB_UTIL.use_consumable_animation(card, cards_to_flip, action, sound)
 
   G.E_MANAGER:add_event(Event {
     trigger = 'after',
-    delay = '0.1',
+    delay = 0.1,
     func = function()
       if action and type(action) == "function" then
         action()
@@ -541,6 +554,15 @@ function PB_UTIL.use_consumable_animation(card, cards_to_flip, action, sound)
           c:flip()
           play_sound('tarot2', percent, 0.6)
           c:juice_up(0.3, 0.3)
+
+          -- Update the sprites of cards
+          if c.config and c.config.center then
+            c:set_sprites(c.config.center)
+          end
+          if c.ability then
+            c.front_hidden = c:should_hide_front()
+          end
+
           return true
         end
       })
@@ -979,11 +1001,10 @@ end
 ---@return string hand the name of the hand, for example "Five of a Kind"
 function PB_UTIL.get_random_visible_hand(seed)
   local hands = {}
-  for _, k in ipairs(G.handlist) do
-    local v = G.GAME.hands[k]
-    if v.visible then hands[#hands + 1] = k end
+  for k, _ in pairs(SMODS.PokerHands) do
+    if SMODS.is_poker_hand_visible(k) then hands[#hands + 1] = k end
   end
-  return pseudorandom_element(hands, pseudoseed(seed))
+  return pseudorandom_element(hands, pseudoseed(seed)) or 'High Card'
 end
 
 --- Gets the next suit in the Da Capo cycle Spades -> Hearts -> Clubs -> Diamonds -> None -> Spades
@@ -1082,4 +1103,57 @@ function PB_UTIL.chance_vars(obj, key, base_numerator, base_denominator)
     key or (obj.config and obj.config.center_key),
     false
   )
+end
+
+--- Whether a given value is of the Card type
+---@param c any
+---@return boolean
+function PB_UTIL.is_card(c)
+  return c and type(c) == "table" and c.is and type(c.is) == "function" and c:is(Card)
+end
+
+-- Returns a table of all the unique special effects in the deck
+---@param check_for_enhancements boolean
+---@param check_for_seals boolean
+---@return integer
+function PB_UTIL.special_cards_in_deck(check_for_enhancements, check_for_seals)
+  local enhancements, seals = {}, {}
+  check_for_enhancements = check_for_enhancements or false
+  check_for_seals = check_for_seals or false
+
+  if G.playing_cards then
+    for _, v in pairs(G.playing_cards) do
+      -- Check for an enhancement
+      if check_for_enhancements then
+        for k, _ in pairs(SMODS.get_enhancements(v)) do
+          PB_UTIL.add_unique_value(enhancements, k)
+        end
+      end
+
+      -- Check for a seal
+      if check_for_seals then
+        if v.Mid.seal then
+          PB_UTIL.add_unique_value(seals, v.Mid.seal)
+        end
+      end
+    end
+  end
+
+  local total =
+      (enhancements and #enhancements or 0)
+      + (seals and #seals or 0)
+
+  return total
+end
+
+---@param tbl table
+---@param value any
+function PB_UTIL.add_unique_value(tbl, value)
+  for _, v in pairs(tbl) do
+    if v == value then
+      return
+    end
+  end
+
+  table.insert(tbl, value)
 end
