@@ -90,7 +90,7 @@ function Blind.debuff_card(self, card, from_blind)
   local ret = debuff_card_ref(self, card, from_blind)
   if card.area ~= G.jokers then
     if G.GAME.paperback then if G.GAME.paperback.da_capo_suit == 'None' then
-        return ret
+      return ret
     end end
     for k, v in ipairs(SMODS.find_card('j_paperback_da_capo')) do
       if not card:is_suit(G.GAME.paperback.da_capo_suit) then
